@@ -171,12 +171,23 @@ function findItalianFood() {
 function searchCuisines() {
     // This will be an empty function that students will complete
     let allCuisines = ["Italian", "Mexican", "French", "Irish", "Vegetarian", "Hungarian"]
+    let searchTerm = customPrompt(`What cuisine would you like to search for?
+    (Options are: Italian, Mexican, French, Irish, Vegetarian, Hungarian)`, allCuisines)
+    let results = dishes.filter(function (el) {
+        if (el.cuisine === searchTerm) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    return results
 }
 
 function searchIngredients() {
     // This will be an empty function that students will complete
     let allIngredients = ["tomato", "cheese", "corn", "flour", "sugar", "beef", "cabbage", "chickpea", "parsley"]
-    let searchTerm = prompt(`What ingredient would you like to search for?`)
+    let searchTerm = customPrompt(`What ingredient would you like to search for?
+    (Options are: tomato, cheese, corn, flour, sugar, beef, cabbage, chickpea, or parsley)`, allIngredients)
     let results = dishes.filter(function (el) {
         if (el.ingredients.includes(searchTerm)) {
             return true;
@@ -205,7 +216,7 @@ function displayDishInfo(dish) {
     }
 }
 
-// <<<<<<<<<<<<<<<<< BONUS: REDUCE FUNCTIONS <<<<<<<<<<<<<<<<<
+// <<<<<<<<<<<<<<<<< POTENTIAL BONUS: REDUCE FUNCTIONS <<<<<<<<<<<<<<<<<
 
 function calculateTotalServings() {
     // This will (potentially) be an empty function that students will complete as a bonus
@@ -236,16 +247,18 @@ function runApp() {
         case "2":
             alert("Searching for Italian dishes...")
             // TODO: Add search function for Italian cuisine
+            let italianDishes = findItalianFood()
+            console.log(italianDishes)
             alert("Found all Italian dishes!  Check the console for full output")
             break
         case "3":
             alert("Searching for dishes by cuisine...")
-            // TODO: Add search function to use USER INPUT to search for dish cuisine
+            let cuisineSearchResults = searchCuisines()
+            console.log(cuisineSearchResults)
             alert("Found all dishes matching the cuisine search term!  Check the console for full output")
             break
         case "4":
             alert("Searching for dishes by ingredient...")
-            // TODO: Add search function to use USER INPUT to search for dishes that INCLUDE that ingredient
             let ingredientSearchResults = searchIngredients()
             console.log(ingredientSearchResults)
             alert("Found all dishes that contain the ingredient search term!  Check the console for full output")
