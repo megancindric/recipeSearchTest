@@ -110,10 +110,10 @@ let todaysSpecial = {
 
 // <<<<<<<<<<<<<<<<< EXAMPLE FUNCTION <<<<<<<<<<<<<<<<<
 
-function findMexicanFood() {
+function findMexicanFood(allDishes) {
     // This will be an example function that will already be completed
     alert("Searching for Mexican dishes...")
-    let results = dishes.filter(function (el) {
+    let results = allDishes.filter(function (el) {
         if (el.cuisine === "Mexican") {
             return true;
         } else {
@@ -141,10 +141,10 @@ function customPrompt(promptQuestion, arrayOfValidResponses) {
 
 // <<<<<<<<<<<<<<<<< MAP & FILTER FUNCTIONS <<<<<<<<<<<<<<<<<
 
-function findItalianFood() {
+function findItalianFood(allDishes) {
     // This will be an empty function that students will complete
     alert("Searching for Italian dishes...")
-    let results = dishes.filter(function (el) {
+    let results = allDishes.filter(function (el) {
         if (el.cuisine === "Italian") {
             return true;
         } else {
@@ -154,12 +154,12 @@ function findItalianFood() {
     console.log(results)
     alert("Found all Italian dishes!  Check the console for full output")
 }
-function searchCuisines() {
+function searchCuisines(allDishes) {
     alert("Searching for dishes by cuisine...")
     let allCuisines = ["Italian", "Mexican", "French", "Irish", "Vegetarian", "Hungarian"]
     let searchTerm = customPrompt(`What cuisine would you like to search for?
     (Options are: Italian, Mexican, French, Irish, Vegetarian, Hungarian)`, allCuisines)
-    let results = dishes.filter(function (el) {
+    let results = allDishes.filter(function (el) {
         if (el.cuisine === searchTerm) {
             return true;
         } else {
@@ -170,12 +170,12 @@ function searchCuisines() {
     alert("Found all dishes matching the cuisine search term!  Check the console for full output")
 }
 
-function searchIngredients() {
+function searchIngredients(allDishes) {
     alert("Searching for dishes by ingredient...")
     let allIngredients = ["tomato", "cheese", "corn", "flour", "sugar", "beef", "cabbage", "chickpea", "parsley"]
     let searchTerm = customPrompt(`What ingredient would you like to search for?
     (Options are: tomato, cheese, corn, flour, sugar, beef, cabbage, chickpea, or parsley)`, allIngredients)
-    let results = dishes.filter(function (el) {
+    let results = allDishes.filter(function (el) {
         if (el.ingredients.includes(searchTerm)) {
             return true;
         } else {
@@ -185,9 +185,9 @@ function searchIngredients() {
     console.log(results)
     alert("Found all dishes that contain the ingredient search term!  Check the console for full output")
 }
-function showCuisineTypes() {
+function showCuisineTypes(allDishes) {
     alert("Searching for cuisine types...")
-    let results = dishes.map(function (el) {
+    let results = allDishes.map(function (el) {
         return el.cuisine
     });
     console.log(results)
@@ -196,6 +196,7 @@ function showCuisineTypes() {
 }
 
 function combineCuisineDish(allDishes, callbackFunction) {
+    alert("Combining cuisine and dish names...")
     let cuisineDishNames = []
     for (let i = 0; i < allDishes.length; i++) {
         let concatenatedDish = callbackFunction(allDishes[i])
@@ -210,14 +211,14 @@ function cuisineDishConcatenator(singleDish) {
     return `${singleDish.cuisine} ${singleDish.name}`
 }
 
-function displayDishInfo(dish) {
+function displayDishInfo(singleDish) {
     alert("Gathering information on today's special dish...")
-    console.log(`ID: ${dish.id}`)
-    console.log(`Name: ${dish.name}`)
-    console.log(`Cuisine: ${dish.cuisine}`)
+    console.log(`ID: ${singleDish.id}`)
+    console.log(`Name: ${singleDish.name}`)
+    console.log(`Cuisine: ${singleDish.cuisine}`)
     console.log(`Ingredient List:`)
-    for (let i = 0; i < dish.ingredients.length; i++) {
-        console.log(`${dish.ingredients[i]}`)
+    for (let i = 0; i < singleDish.ingredients.length; i++) {
+        console.log(`${singleDish.ingredients[i]}`)
     }
     alert("Success!  Check the console for full recipe information!")
 }
@@ -233,7 +234,7 @@ function calculateTotalServings() {
 }
 
 
-function runApp() {
+function runApp(allDishes, specialDish) {
     alert("Welcome to the Recipe Searching Application!")
     let userChoice = customPrompt(`Press 1 to search for Mexican dishes.
     Press 2 to search for Italian dishes.    
@@ -244,30 +245,30 @@ function runApp() {
     Enter "Exit" to quit the application.`, ["1", "2", "3", "4", "5", "6", "Exit"])
     switch (userChoice) {
         case "1":
-            findMexicanFood()
+            findMexicanFood(allDishes)
             break
         case "2":
-            findItalianFood()
+            findItalianFood(allDishes)
             break
         case "3":
-            searchCuisines()
+            searchCuisines(allDishes)
             break
         case "4":
-            searchIngredients()
+            searchIngredients(allDishes)
             break
         case "5":
-            combineCuisineDish(dishes, cuisineDishConcatenator)
+            combineCuisineDish(allDishes, cuisineDishConcatenator)
             break
         case "6":
-            displayDishInfo(todaysSpecial)
+            displayDishInfo(specialDish)
             break
         case "exit":
             alert("Thank you for using the Recipe Searching Application!  Goodbye!")
             return
         default:
             alert("Invalid choice, please try your selection again!")
-            return runApp()
+            return runApp(allDishes, specialDish)
     }
 }
 
-runApp()
+runApp(dishes, todaysSpecial)

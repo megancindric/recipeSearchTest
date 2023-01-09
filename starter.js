@@ -130,32 +130,23 @@ function findMexicanFood() {
 
 // <<<<<<<<<<<<<<<<< MAP & FILTER FUNCTIONS <<<<<<<<<<<<<<<<<
 
-function findItalianFood() {
+function findItalianFood(allDishes) {
     alert("Searching for Italian dishes...")
     // TODO: Filter all dishes 
     alert("Found all Italian dishes!  Check the console for full output")
 }
-function searchCuisines() {
+function searchCuisines(allDishes) {
     alert("Searching for dishes by cuisine...")
     // TODO: Gather user input for a cuisin to search for, then filter for all dishes matching this cuisine type
     // Then, log the filter results to the console
     alert("Found all dishes matching the cuisine search term!  Check the console for full output")
 }
 
-function searchIngredients() {
+function searchIngredients(allDishes) {
     alert("Searching for dishes by ingredient...")
     // TODO: Gather user input for an ingredient to search for, then filter for all dishes that INCLUDE this ingredient in their ingredients array property
     // Then, log the filter results to the console
     alert("Found all dishes that contain the ingredient search term!  Check the console for full output")
-}
-function showCuisineTypes() {
-    alert("Searching for cuisine types...")
-    let results = dishes.map(function (el) {
-        return el.cuisine
-    });
-    console.log(results)
-    alert("Found all cuisine types!  Check the console for full output.")
-
 }
 
 function cuisineDishConcatenator(singleDish) {
@@ -163,12 +154,13 @@ function cuisineDishConcatenator(singleDish) {
 }
 
 function combineCuisineDish(allDishes, callbackFunction) {
+    alert("Combining cuisine and dish names...")
     // TODO: Apply the concatenatorFunction to each dish in allDishes, then log to the console the modified result
     alert("Successfully combined cuisine and dish names!  Check the console for full output.")
 
 }
 
-function displayDishInfo(dish) {
+function displayDishInfo(singleDish) {
     alert("Gathering information on today's special dish...")
     // TODO: Log to the console all information about the passed-in dish object
     alert("Success!  Check the console for full recipe information!")
@@ -185,7 +177,7 @@ function customPrompt(promptQuestion, arrayOfValidResponses) {
 }
 
 
-function runApp() {
+function runApp(allDishes, specialDish) {
     alert("Welcome to the Recipe Searching Application!")
     let userChoice = customPrompt(`Press 1 to search for Mexican dishes.
     Press 2 to search for Italian dishes.    
@@ -196,22 +188,22 @@ function runApp() {
     Enter "Exit" to quit the application.`, ["1", "2", "3", "4", "5", "6", "Exit"])
     switch (userChoice) {
         case "1":
-            findMexicanFood()
+            findMexicanFood(allDishes)
             break
         case "2":
-            findItalianFood()
+            findItalianFood(allDishes)
             break
         case "3":
-            searchCuisines()
+            searchCuisines(allDishes)
             break
         case "4":
-            searchIngredients()
+            searchIngredients(allDishes)
             break
         case "5":
-            combineCuisineDish(dishes, cuisineDishConcatenator)
+            combineCuisineDish(allDishes, cuisineDishConcatenator)
             break
         case "6":
-            displayDishInfo(todaysSpecial)
+            displayDishInfo(specialDish)
             break
         case "exit":
             alert("Thank you for using the Recipe Searching Application!  Goodbye!")
@@ -222,4 +214,4 @@ function runApp() {
     }
 }
 
-runApp()
+runApp(dishes, todaysSpecial)
