@@ -128,61 +128,27 @@ function findMexicanFood() {
 
 }
 
-// <<<<<<<<<<<<<<<<< CUSTOM PROMPT FUNCTION <<<<<<<<<<<<<<<<<
 
-function customPrompt(promptQuestion, arrayOfValidResponses) {
-    // Students will start with prompt(), then will refactor to use this customPrompt() function
-    let response
-    while (!arrayOfValidResponses.includes(response)) {
-        response = prompt(promptQuestion)
-    }
-    return response
-}
 
 // <<<<<<<<<<<<<<<<< MAP & FILTER FUNCTIONS <<<<<<<<<<<<<<<<<
 
 function findItalianFood() {
     // This will be an empty function that students will complete
     alert("Searching for Italian dishes...")
-    let results = dishes.filter(function (el) {
-        if (el.cuisine === "Italian") {
-            return true;
-        } else {
-            return false;
-        }
-    });
-    console.log(results)
+    // TODO: Filter all dishes 
     alert("Found all Italian dishes!  Check the console for full output")
 }
 function searchCuisines() {
     alert("Searching for dishes by cuisine...")
-    let allCuisines = ["Italian", "Mexican", "French", "Irish", "Vegetarian", "Hungarian"]
-    let searchTerm = customPrompt(`What cuisine would you like to search for?
-    (Options are: Italian, Mexican, French, Irish, Vegetarian, Hungarian)`, allCuisines)
-    let results = dishes.filter(function (el) {
-        if (el.cuisine === searchTerm) {
-            return true;
-        } else {
-            return false;
-        }
-    });
-    console.log(results)
+    // TODO: Gather user input for a cuisin to search for, then filter for all dishes matching this cuisine type
+    // Then, log the filter results to the console
     alert("Found all dishes matching the cuisine search term!  Check the console for full output")
 }
 
 function searchIngredients() {
     alert("Searching for dishes by ingredient...")
-    let allIngredients = ["tomato", "cheese", "corn", "flour", "sugar", "beef", "cabbage", "chickpea", "parsley"]
-    let searchTerm = customPrompt(`What ingredient would you like to search for?
-    (Options are: tomato, cheese, corn, flour, sugar, beef, cabbage, chickpea, or parsley)`, allIngredients)
-    let results = dishes.filter(function (el) {
-        if (el.ingredients.includes(searchTerm)) {
-            return true;
-        } else {
-            return false;
-        }
-    });
-    console.log(results)
+    // TODO: Gather user input for an ingredient to search for, then filter for all dishes that INCLUDE this ingredient in their ingredients array property
+    // Then, log the filter results to the console
     alert("Found all dishes that contain the ingredient search term!  Check the console for full output")
 }
 function showCuisineTypes() {
@@ -196,41 +162,30 @@ function showCuisineTypes() {
 }
 
 function cuisineDishConcatenator(singleDish) {
-    return `${singleDish.cuisine} ${singleDish.name}`
+    // TODO: Combine the dish Cuisine and Name into a single string, and return it
 }
 
 function combineCuisineDish(allDishes, callbackFunction) {
-    let cuisineDishNames = []
-    for (let i = 0; i < allDishes.length; i++) {
-        let concatenatedDish = callbackFunction(allDishes[i])
-        cuisineDishNames.push(concatenatedDish)
-    }
-    console.log(cuisineDishNames)
+    // TODO: Apply the concatenatorFunction to each dish in allDishes, then log to the console the modified result
     alert("Successfully combined cuisine and dish names!  Check the console for full output.")
 
 }
 
 function displayDishInfo(dish) {
     alert("Gathering information on today's special dish...")
-    console.log(`ID: ${dish.id}`)
-    console.log(`Name: ${dish.name}`)
-    console.log(`Cuisine: ${dish.cuisine}`)
-    console.log(`Ingredient List:`)
-    for (let i = 0; i < dish.ingredients.length; i++) {
-        console.log(`${dish.ingredients[i]}`)
-    }
+    // TODO: Log to the console all information about the passed-in dish object
     alert("Success!  Check the console for full recipe information!")
 }
 
-// <<<<<<<<<<<<<<<<< POTENTIAL BONUS: REDUCE FUNCTIONS <<<<<<<<<<<<<<<<<
+// <<<<<<<<<<<<<<<<< CUSTOM PROMPT FUNCTION <<<<<<<<<<<<<<<<<
 
-function calculateTotalServings() {
-    // This will (potentially) be an empty function that students will complete as a bonus
-    alert("Calculating total number of servings...")
-    let results = dishes.reduce(function (total, el) {
-        return total + el.servings;
-    }, 0)
-    return results
+function customPrompt(promptQuestion, arrayOfValidResponses) {
+    // Students will start with prompt(), then will refactor to use this customPrompt() function
+    let response
+    while (!arrayOfValidResponses.includes(response)) {
+        response = prompt(promptQuestion)
+    }
+    return response
 }
 
 
