@@ -111,7 +111,6 @@ let todaysSpecial = {
 // <<<<<<<<<<<<<<<<< EXAMPLE FUNCTION <<<<<<<<<<<<<<<<<
 
 function findMexicanFood() {
-    // This will be an example function that will already be completed
     alert("Searching for Mexican dishes...")
     let results = dishes.filter(function (el) {
         if (el.cuisine === "Mexican") {
@@ -120,7 +119,6 @@ function findMexicanFood() {
             return false;
         }
     });
-
     // Debug tip: Place a Breakpoint on the console.log AFTER the filter, then hover over "results" to see results of filter 
     // without having to step through the whole thing!
     console.log(results)
@@ -133,7 +131,6 @@ function findMexicanFood() {
 // <<<<<<<<<<<<<<<<< MAP & FILTER FUNCTIONS <<<<<<<<<<<<<<<<<
 
 function findItalianFood() {
-    // This will be an empty function that students will complete
     alert("Searching for Italian dishes...")
     // TODO: Filter all dishes 
     alert("Found all Italian dishes!  Check the console for full output")
@@ -180,7 +177,6 @@ function displayDishInfo(dish) {
 // <<<<<<<<<<<<<<<<< CUSTOM PROMPT FUNCTION <<<<<<<<<<<<<<<<<
 
 function customPrompt(promptQuestion, arrayOfValidResponses) {
-    // Students will start with prompt(), then will refactor to use this customPrompt() function
     let response
     while (!arrayOfValidResponses.includes(response)) {
         response = prompt(promptQuestion)

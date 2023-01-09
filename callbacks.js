@@ -195,10 +195,6 @@ function showCuisineTypes() {
 
 }
 
-function cuisineDishConcatenator(singleDish) {
-    return `${singleDish.cuisine} ${singleDish.name}`
-}
-
 function combineCuisineDish(allDishes, callbackFunction) {
     let cuisineDishNames = []
     for (let i = 0; i < allDishes.length; i++) {
@@ -208,6 +204,10 @@ function combineCuisineDish(allDishes, callbackFunction) {
     console.log(cuisineDishNames)
     alert("Successfully combined cuisine and dish names!  Check the console for full output.")
 
+}
+
+function cuisineDishConcatenator(singleDish) {
+    return `${singleDish.cuisine} ${singleDish.name}`
 }
 
 function displayDishInfo(dish) {
@@ -222,15 +222,14 @@ function displayDishInfo(dish) {
     alert("Success!  Check the console for full recipe information!")
 }
 
-// <<<<<<<<<<<<<<<<< POTENTIAL BONUS: REDUCE FUNCTIONS <<<<<<<<<<<<<<<<<
+// <<<<<<<<<<<<<<<<< BONUS: REDUCE FUNCTIONS <<<<<<<<<<<<<<<<<
 
 function calculateTotalServings() {
-    // This will (potentially) be an empty function that students will complete as a bonus
     alert("Calculating total number of servings...")
     let results = dishes.reduce(function (total, el) {
         return total + el.servings;
     }, 0)
-    return results
+    console.log(results)
 }
 
 
